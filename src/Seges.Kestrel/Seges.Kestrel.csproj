@@ -10,5 +10,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="[2,3)" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Https" Version="[2,3)" />
+    <PackageReference Include="gitlink" Version="3.0.0">
+      <ExcludeAssets>All</ExcludeAssets>
+    </PackageReference>
   </ItemGroup>
 </Project>
