@@ -24,6 +24,8 @@ bld/
 [Oo]bj/
 [Ll]og/
 
+.vscode/
+
 # Visual Studio 2015 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
@@ -275,8 +277,8 @@ __pycache__/
 *.pyc
 
 # Cake - Uncomment if you are using it
-# tools/**
-# !tools/packages.config
+tools/*
+!tools/packages.config
 
 # Telerik's JustMock configuration file
 *.jmconfig
