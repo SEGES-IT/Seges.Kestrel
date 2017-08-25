@@ -100,6 +100,18 @@ Task("Package")
                 });
             }
         }
-});
+        // https://github.com/NuGet/Home/issues/4142 workaround
+        Func<FilePath,bool> isSymbolPackage = _ => _.Segments.Last().Contains(".symbols.");
+        var packages = GetFiles(output.Path + "/*.nupkg");
+        var packagesWithPdbs = packages.Where(isSymbolPackage);
+        var packagesWithoutPdbs = packages.Where(f => !isSymbolPackage(f));
+        foreach (var file in packagesWithPdbs)
+        {
+            var newFile = packagesWithoutPdbs.Single(f => f.Segments.Last() == file.Segments.Last().Replace(".symbols",""));
+            DeleteFile(newFile);
+            MoveFile(file, newFile);
+        }
+
+    });
 
 RunTarget(target);
